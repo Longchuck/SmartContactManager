@@ -49,8 +49,13 @@ public class MyConfig {
 		http.authorizeRequests()
 		.requestMatchers("/admin/**").hasRole("ADMIN")
 		.requestMatchers("/user/**").hasRole("USER")
-		.requestMatchers("/**").permitAll().and().formLogin().loginPage("/signin").and().csrf().disable();
-
+		.requestMatchers("/**")
+		.permitAll().and()
+		.formLogin()
+		.loginPage("/signin")
+		.loginProcessingUrl("/dologin")
+		.defaultSuccessUrl("/user/index")
+		.and().csrf().disable();
 		http.formLogin().defaultSuccessUrl("/user/index", true);
 		return http.build();
 	}
