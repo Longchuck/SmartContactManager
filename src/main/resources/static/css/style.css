@@ -31,6 +31,13 @@ body{
 #login .container #login-row #login-column #login-box #login-form #register-link {
   margin-top: -85px;
 }
+/*profile picture*/
+.my_profile_picture{
+	width: 35px;
+	height: 35px;
+	object-fit: cover;
+	border-radius: 50%;
+}
 
 /* sidebar style */
 @media only screen and (max-width: 600px){
@@ -79,4 +86,59 @@ body{
 	right: 35px;
 	font-size: 36px;
 	cursor: pointer;
+}
+
+/*button*/
+h1 {
+  position: relative;
+  text-align: center;
+  color: #353535;
+  font-size: 50px;
+  font-family: "Cormorant Garamond", serif;
+}
+
+p {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  text-align: center;
+  font-size: 18px;
+  color: #676767;
+}
+.frame {
+  width: 90%;
+  margin: 40px auto;
+  text-align: center;
+}
+button {
+  margin: 20px;
+}
+.custom-btn {
+  width: 130px;
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+/* search css */
+.search-container{
+	position: relative;
+}
+.search-result{
+	position: absolute;
+	background:white;
+	width: 100%;
+	padding: 10px;
+	border:1px solid gray;
+	display: none;
 }

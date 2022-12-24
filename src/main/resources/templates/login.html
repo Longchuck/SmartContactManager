@@ -21,7 +21,7 @@
 								<div th:if="${param.logout}" class="alert alert-success">
 									You have been logout!!!
 								</div>
-							
+
 								<h3 class="text-center text-info">Login</h3>
 								<div class="form-group">
 									<label for="username" class="text-info">Username:</label><br>
@@ -39,6 +39,10 @@
 								<div id="register-link" class="text-right">
 									<a href="#" th:href="@{/signup}" class="text-info">Register here</a>
 								</div>
+								<div class="container text-center">
+									<a th:href="@{/forgot}"> Forgot Password? </a>
+								</div>
+
 							</form>
 						</div>
 					</div>

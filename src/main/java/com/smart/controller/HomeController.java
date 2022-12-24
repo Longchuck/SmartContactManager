@@ -7,11 +7,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.smart.dao.UserRepository;
 import com.smart.entities.User;
 import com.smart.helper.Message;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 import org.springframework.ui.Model;
@@ -39,12 +42,14 @@ public class HomeController {
 
 	@RequestMapping("/about")
 	public String about(Model model) {
+		
 		model.addAttribute("title", "About - Smart Contact Manager");
 		return "about";
 	}
 
 	@RequestMapping("/signup")
 	public String signup(Model model) {
+	
 		model.addAttribute("title", "Signup - Smart Contact Manager");
 		model.addAttribute("user", new User());
 		return "signup";
@@ -89,4 +94,16 @@ public class HomeController {
 		model.addAttribute("title", "Login - Smart Contact Manager");
 		return "login";
 	}
+	
+	//remove attribute
+	public void removeVerificationMessageFromSession() {
+        try {
+            HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+            HttpSession session = request.getSession();
+            session.removeAttribute("message");
+        } catch (RuntimeException e) {
+        	System.out.print("ERROR"+e.getMessage());
+			e.setStackTrace(null);
+        }
+    }
 }

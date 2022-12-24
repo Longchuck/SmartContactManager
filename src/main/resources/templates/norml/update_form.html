@@ -2,17 +2,15 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="norml/user_base::layout(~{::section})">
 
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>Update Form</title>
 </head>
 
 <body>
+
 	<section>
 		<div class="card mr-3 ml-3">
 			<div class="card-body">
-				<h1 class="text-center">Add Contact</h1>
+				<h1 class="text-center">Update Contact</h1>
 				<div class="container-fluid mt-1">
 					<div class="row">
 						<div class="col-md-8 offset-md-2">
@@ -22,9 +20,11 @@
 								th:object="${contact}" 
 								enctype="multipart/form-data" 
 								method="POST" 
-								th:action="@{/user/process-contact}"
+								th:action="@{/user/process-update}"
 								class="mt-2"
-                            >									
+                            >			
+                            <input type="hidden" th:value="${contact.cId}" name="cId" />	
+                       				
 							<!-- first name -->
 							<div class="input-group">
 								<div class="input-group-prepend">
@@ -33,6 +33,7 @@
                                     </div>
                                 </div>
                                 <input 
+                                	th:value="${contact.name}"
                                 	required
                                     type="text" 
                                     id="firstName" 
@@ -49,6 +50,7 @@
                                     </div>
                                 </div>
                                 <input 
+                                	th:value="${contact.seconName}"
                                     type="text" 
                                     id="seconName" 
                                     name="seconName" 
@@ -63,11 +65,12 @@
                                     </div>
                                 </div>
                                 <input 
+                                	th:value="${contact.phone}"
                                 	required
                                     type="number" 
                                     id="phone" 
                                     name="phone" 
-                                    placeholder="Enter phone here" 
+                                    placeholder="Enter phone number here" 
                                     class="form-control">
                             </div>
                             <!-- email -->
@@ -78,6 +81,7 @@
                                     </div>
                                 </div>
                                 <input 
+                                	th:value="${contact.email}"
                                 	required
                                     type="email" 
                                     id="email" 
@@ -94,6 +98,7 @@
                                     </div>
                                 </div>
                                 <input 
+                                	th:value="${contact.work}"
                                     type="text" 
                                     id="work" 
                                     name="work" 
@@ -103,7 +108,7 @@
                             <!-- description -->
                             <div class="form-group mt-3">
 								<textarea 
-									
+									th:text="${contact.description}"
 									name="description" 
 									id="mytextarea" 
 									class="form-control" 
@@ -112,6 +117,10 @@
                             </div>
                      
                             <!-- contact image -->
+							<div class="container text-center">
+								<img style="width:250px; height:250px" class="img-fluid my_profile_picture" src="" th:src="@{ '/img/'+${contact. image}}">
+							</div>
+							<a class="text-secondary md-2 mt-2">choose new profile picture</a>
 							<div class="custom-file">
 								<input type="file" name="profileImage" />							
 							</div>
@@ -124,7 +133,6 @@
 				</div>
 			</div>
 		</div>
-
 		<!-- Tiny MCE -->
 		<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 		<script>
@@ -132,6 +140,7 @@
 				selector: '#mytextarea'
 			});
     	</script>
+		
 	</section>
 </body>
 

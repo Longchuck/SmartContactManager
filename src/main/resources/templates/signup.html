@@ -12,12 +12,10 @@
 			<div class="row">
 				<div class="col-md-6 offset-md-3">
 					<div class="my-card mt-1">
+								
 						<div th:if="${session.message}" th:classappend="${session.message.type}" class="alert" role="alert">
 							<p class=" text-center" th:text="${session.message.content}"></p>
-
 						</div>
-
-
 						<div class="container text-center">
 							<img src="" th:src="@{/img/icons8_add_user_male_80px_2.png}" alt=""/>
 							<h1>Register</h1>

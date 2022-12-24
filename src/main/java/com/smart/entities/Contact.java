@@ -2,6 +2,8 @@ package com.smart.entities;
 
 import org.hibernate.annotations.ManyToAny;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,10 +25,11 @@ public class Contact {
 	private String email;
 	private String phone;
 	private String image;
-	@Column(length = 1000)
+	@Column(length = 5000)
 	private String description;
 	
 	@ManyToOne
+	@JsonIgnore
 	private User user;
 	
 	public int getcId() {
@@ -83,6 +86,5 @@ public class Contact {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
 	
 }
